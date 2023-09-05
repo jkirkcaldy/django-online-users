@@ -9,7 +9,7 @@ class OnlineUserActivity(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     last_activity = models.DateTimeField()
     videos_watched = models.IntegerField(default=0)
-    last_clip_watched = models.OneToOneField(clips, on_delete=SET_NULL)
+    last_clip_watched = models.ForeignKey(clips, null=True, blank=True, on_delete=models.SET_NULL)
     
     class Meta:
         verbose_name = 'Online user activity'
