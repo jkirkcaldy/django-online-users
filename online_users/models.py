@@ -3,12 +3,18 @@ from datetime import timedelta
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-
+from metadata_manager.models import clips
 
 class OnlineUserActivity(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     last_activity = models.DateTimeField()
-
+    videos_watched = models.IntegerField(default=0)
+    last_clip_watched = models.OneToOneField(clips, on_delete=SET_NULL)
+    
+    class Meta:
+        verbose_name = 'Online user activity'
+        verbose_name_plural = 'Online user activities'
+        
     @staticmethod
     def update_user_activity(user):
         """Updates the timestamp a user has for their last action. Uses UTC time."""
