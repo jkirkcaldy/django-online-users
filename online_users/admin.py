@@ -4,7 +4,7 @@ from online_users.models import OnlineUserActivity
 
 
 class OnlineUserActivityAdmin(admin.ModelAdmin):
-    list_display = ('user', 'last_activity',)
+    list_display = ('user', 'last_activity', 'videos_watched', 'last_clip_watched')
     search_fields = ['user__username', ]
     list_filter = ['last_activity']
 
