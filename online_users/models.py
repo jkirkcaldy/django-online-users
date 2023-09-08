@@ -10,6 +10,7 @@ class OnlineUserActivity(models.Model):
     last_activity = models.DateTimeField()
     videos_watched = models.IntegerField(default=0)
     last_clip_watched = models.ForeignKey(clips, null=True, blank=True, on_delete=models.SET_NULL)
+    currently_playing = models.BooleanField(default=False)
     
     class Meta:
         verbose_name = 'Online user activity'
